@@ -1,17 +1,12 @@
 {
-  "name": "testproxy",
+  "name": "bun-video-proxy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "bun run server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "@elysiajs/node": "^1.4.5",
-    "elysia": "^1.4.30"
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "latest"
   }
 }
