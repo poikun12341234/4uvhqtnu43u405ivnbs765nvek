@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: 4uvhqtnu43u405ivnbs765nvek
+    runtime: node
+    rootDir: render
+    buildCommand: bun install
+    startCommand: bun start
