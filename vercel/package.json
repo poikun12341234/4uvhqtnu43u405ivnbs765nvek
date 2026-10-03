@@ -1,0 +1,11 @@
+{
+  "name": "vercel-bun-reverse-proxy",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/functions": "latest"
+  },
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
