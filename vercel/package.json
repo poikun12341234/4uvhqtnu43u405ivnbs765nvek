@@ -1,11 +1,12 @@
 {
-  "name": "vercel-bun-reverse-proxy",
-  "private": true,
-  "type": "module",
+  "name": "vercel-api",
+  "version": "1.0.0",
+  "main": "api/[...path].js",
   "dependencies": {
     "@vercel/functions": "latest"
   },
+
   "scripts": {
-    "dev": "vercel dev"
+    "vc-build": "echo 'No build step required'"
   }
 }
