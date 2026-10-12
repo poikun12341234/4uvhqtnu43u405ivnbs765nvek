@@ -18,8 +18,16 @@ export default async function handler(req, res) {
         const protocol = ((Array.isArray(forwardedProto)
             ? forwardedProto[0]
             : forwardedProto) || 'https').split(',')[0].trim();
-        const incomingPath = (req.url || '/').replace(/^\/api(?=\/|\?|$)/, '') || '/';
-        const url = new URL(incomingPath, `${protocol}://${host}`);
+        const functionUrl = new URL(req.url || '/', `${protocol}://${host}`);
+        const originalPath = functionUrl.searchParams.get('__proxy_path') || '/';
+        functionUrl.searchParams.delete('__proxy_path');
+        const proxyPath = originalPath.startsWith('/')
+            ? originalPath
+            : `/${originalPath}`;
+        const url = new URL(
+            `${proxyPath}${functionUrl.search}`,
+            `${protocol}://${host}`
+        );
         const headers = new Headers();
 
         for (const [name, value] of Object.entries(req.headers)) {
