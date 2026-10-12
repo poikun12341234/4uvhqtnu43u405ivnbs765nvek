@@ -2064,17 +2064,19 @@ async function fetchGeneral(request, incomingUrl, targetUrl) {
         request,
         incomingUrl
     );
+    const body =
+        request.method !== 'GET' &&
+        request.method !== 'HEAD'
+            ? request.body
+            : undefined;
 
     const response = await fetch(
         targetUrl,
         {
             method: request.method,
             headers,
-            body:
-                request.method !== 'GET' &&
-                request.method !== 'HEAD'
-                    ? request.body
-                    : undefined,
+            body,
+            ...(body ? { duplex: 'half' } : {}),
             redirect: 'manual'
         }
     );
